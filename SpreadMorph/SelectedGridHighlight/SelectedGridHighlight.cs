@@ -36,9 +36,17 @@ public partial class SelectedGridHighlight : Node2D
         {
             if (i < gridPosList.Count)
             {
-                highlightObjList[i].Visible = true;
-                highlightObjList[i].Position = new Vector2(gridPosList[i].X * Grid.GRID_WIDTH, gridPosList[i].Y * Grid.GRID_HEIGHT);
-                highlightObjList[i].Scale = new Vector2(Grid.GRID_WIDTH, Grid.GRID_HEIGHT);
+                CellMatrixObjectView objectView = ObjectSpace.Instance.GetObject(gridPosList[i])?.ObjectView as CellMatrixObjectView;
+                if (objectView != null)
+                {
+                    highlightObjList[i].Visible = true;
+                    highlightObjList[i].Position = new Vector2(objectView.ViewPos.X * Grid.GRID_WIDTH, objectView.ViewPos.Y * Grid.GRID_HEIGHT);
+                    highlightObjList[i].Scale = new Vector2(objectView.ViewSize.X * Grid.GRID_WIDTH, objectView.ViewSize.Y * Grid.GRID_HEIGHT);
+                }
+                else
+                {
+                    highlightObjList[i].Visible = false;
+                }
             }
             else
             {

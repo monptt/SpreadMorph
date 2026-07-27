@@ -13,6 +13,11 @@ public partial class CellMatrixObjectView : ObjectViewBase
     [Export]
     PackedScene cellScene;
 
+    public Vector2I ViewSize { get; private set; }
+    public GridPos ViewPos { get; private set; }
+
+
+
     public void Init(int xNum, int yNum, GridPos pos, string name)
     {
         // 一旦クリア
@@ -21,6 +26,10 @@ public partial class CellMatrixObjectView : ObjectViewBase
             cellNode.RemoveChild(child);
             child.QueueFree();
         }
+
+        // ビューのサイズを設定
+        ViewSize = new Vector2I(xNum, yNum);
+        ViewPos = pos;
 
         // セルを作成
         for (int y = 0; y < yNum; y++)
