@@ -8,6 +8,12 @@ public class Vec2Element : VecElement
     public IntegerElement X => elements[0];
     public IntegerElement Y => elements[1];
 
+    public Vec2Element()
+    {
+        this.elements[0] = new IntegerElement(0);
+        this.elements[1] = new IntegerElement(0);
+    }
+
     public Vec2Element(IntegerElement x, IntegerElement y)
     {
         elements[0] = x;

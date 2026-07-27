@@ -40,6 +40,21 @@ public class FuncMultiply : FormulaFuncBase
             }
         }
 
+        // 行列・ベクトル
+        {
+            if (a is Mat2Element mat2ElementA)
+            {
+                if (b is Vec2Element vec2ElementB)
+                {
+                    return mat2ElementA * vec2ElementB;
+                }
+                if (b is Mat2Element mat2ElementB)
+                {
+                    return mat2ElementA * mat2ElementB;
+                }
+            }
+        }
+
         return null;
     }
 
