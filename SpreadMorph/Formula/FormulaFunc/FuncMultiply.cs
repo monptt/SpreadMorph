@@ -53,6 +53,28 @@ public class FuncMultiply : FormulaFuncBase
                     return mat2ElementA * mat2ElementB;
                 }
             }
+            if (a is Mat3Element mat3ElementA)
+            {
+                if (b is Vec3Element vec3ElementB)
+                {
+                    return mat3ElementA * vec3ElementB;
+                }
+                if (b is Mat3Element mat3ElementB)
+                {
+                    return mat3ElementA * mat3ElementB;
+                }
+            }
+            if (a is Mat4Element mat4ElementA)
+            {
+                if (b is Vec4Element vec4ElementB)
+                {
+                    return mat4ElementA * vec4ElementB;
+                }
+                if (b is Mat4Element mat4ElementB)
+                {
+                    return mat4ElementA * mat4ElementB;
+                }
+            }
         }
 
         return null;

@@ -1,4 +1,4 @@
-public class Vec4Element : VecElement
+public class Vec4Element : VecElement, INegate
 {
     public override int Dim => 4;
 
@@ -10,6 +10,14 @@ public class Vec4Element : VecElement
     public IntegerElement Y => elements[1];
     public IntegerElement Z => elements[2];
     public IntegerElement W => elements[3];
+
+    public Vec4Element()
+    {
+        elements[0] = new IntegerElement(0);
+        elements[1] = new IntegerElement(0);
+        elements[2] = new IntegerElement(0);
+        elements[3] = new IntegerElement(0);
+    }
 
     public Vec4Element(IntegerElement x, IntegerElement y, IntegerElement z, IntegerElement w)
     {
@@ -28,5 +36,10 @@ public class Vec4Element : VecElement
     public static Vec4Element Sum(Vec4Element a, Vec4Element b)
     {
         return new Vec4Element(IntegerElement.Sum(a.X, b.X), IntegerElement.Sum(a.Y, b.Y), IntegerElement.Sum(a.Z, b.Z), IntegerElement.Sum(a.W, b.W));
+    }
+
+    public ElementBase Negate()
+    {
+        return new Vec4Element(X.Negate() as IntegerElement, Y.Negate() as IntegerElement, Z.Negate() as IntegerElement, W.Negate() as IntegerElement);
     }
 }

@@ -1,4 +1,4 @@
-public class Vec2Element : VecElement
+public class Vec2Element : VecElement, INegate
 {
     public override int Dim => 2;
 
@@ -29,5 +29,10 @@ public class Vec2Element : VecElement
     public static Vec2Element Sum(Vec2Element a, Vec2Element b)
     {
         return new Vec2Element(IntegerElement.Sum(a.X, b.X), IntegerElement.Sum(a.Y, b.Y));
+    }
+
+    public ElementBase Negate()
+    {
+        return new Vec2Element(X.Negate() as IntegerElement, Y.Negate() as IntegerElement);
     }
 }

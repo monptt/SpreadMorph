@@ -41,4 +41,35 @@ public class Mat4Element : MatElement
         elements[14] = o;
         elements[15] = p;
     }
+
+    public static Vec4Element operator *(Mat4Element a, Vec4Element b)
+    {
+        Vec4Element result = new Vec4Element();
+        for (int i = 0; i < 4; i++)
+        {
+            result.Elements[i] =
+                IntegerElement.Multiply(a.GetElement(i, 0), b.GetElement(0)) +
+                IntegerElement.Multiply(a.GetElement(i, 1), b.GetElement(1)) +
+                IntegerElement.Multiply(a.GetElement(i, 2), b.GetElement(2)) +
+                IntegerElement.Multiply(a.GetElement(i, 3), b.GetElement(3));
+        }
+        return result;
+    }
+
+    public static Mat4Element operator *(Mat4Element a, Mat4Element b)
+    {
+        Mat4Element result = new Mat4Element();
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                result.Elements[i * 4 + j] =
+                    IntegerElement.Multiply(a.GetElement(i, 0), b.GetElement(0, j)) +
+                    IntegerElement.Multiply(a.GetElement(i, 1), b.GetElement(1, j)) +
+                    IntegerElement.Multiply(a.GetElement(i, 2), b.GetElement(2, j)) +
+                    IntegerElement.Multiply(a.GetElement(i, 3), b.GetElement(3, j));
+            }
+        }
+        return result;
+    }
 }
