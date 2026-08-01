@@ -28,7 +28,7 @@ public partial class Mat2Object : ObjectBase
             ElementBase b = ObjectView.GetCells()[1].Formula.Evaluate();
             ElementBase c = ObjectView.GetCells()[2].Formula.Evaluate();
             ElementBase d = ObjectView.GetCells()[3].Formula.Evaluate();
-            if (a is Integer numA && b is Integer numB && c is Integer numC && d is Integer numD)
+            if (a is Number numA && b is Number numB && c is Number numC && d is Number numD)
             {
                 SetElement(new Mat2(numA, numB, numC, numD));
             }
@@ -41,10 +41,10 @@ public partial class Mat2Object : ObjectBase
 
     public override ElementBase GetElement()
     {
-        Integer a = ObjectView.GetCells()[0].Element as Integer;
-        Integer b = ObjectView.GetCells()[1].Element as Integer;
-        Integer c = ObjectView.GetCells()[2].Element as Integer;
-        Integer d = ObjectView.GetCells()[3].Element as Integer;
+        Number a = ObjectView.GetCells()[0].Element as Number;
+        Number b = ObjectView.GetCells()[1].Element as Number;
+        Number c = ObjectView.GetCells()[2].Element as Number;
+        Number d = ObjectView.GetCells()[3].Element as Number;
         return new Mat2(a, b, c, d);
     }
 

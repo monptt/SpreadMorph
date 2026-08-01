@@ -26,7 +26,7 @@ public partial class Vec2Object : ObjectBase
         {
             ElementBase x = ObjectView.GetCells()[0].Formula.Evaluate();
             ElementBase y = ObjectView.GetCells()[1].Formula.Evaluate();
-            if (x is Integer numX && y is Integer numY)
+            if (x is Number numX && y is Number numY)
             {
                 SetElement(new Vec2(numX, numY));
             }
@@ -39,8 +39,8 @@ public partial class Vec2Object : ObjectBase
 
     public override ElementBase GetElement()
     {
-        Integer x = ObjectView.GetCells()[0].Element as Integer;
-        Integer y = ObjectView.GetCells()[1].Element as Integer;
+        Number x = ObjectView.GetCells()[0].Element as Number;
+        Number y = ObjectView.GetCells()[1].Element as Number;
         return new Vec2(x, y);
     }
 

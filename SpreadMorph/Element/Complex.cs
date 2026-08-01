@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 複素数
     /// </summary>
-    public class Complex : Number, INegate
+    public class Complex : Number
     {
         Integer re;
         Integer im;
@@ -56,7 +56,7 @@ namespace Element
             return new Complex(a.Re * b, a.Im * b);
         }
 
-        public ElementBase Negate()
+        public override ElementBase Negate()
         {
             return new Complex(new Integer(-re.Value), new Integer(-im.Value));
         }

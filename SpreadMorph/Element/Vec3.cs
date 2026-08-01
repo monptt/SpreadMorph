@@ -4,13 +4,13 @@ namespace Element
     {
         public override int Dim => 3;
 
-        Integer[] elements = new Integer[3];
-        public override Integer[] Elements => elements;
+        Number[] elements = new Number[3];
+        public override Number[] Elements => elements;
 
 
-        public Integer X => elements[0];
-        public Integer Y => elements[1];
-        public Integer Z => elements[2];
+        public Number X => elements[0];
+        public Number Y => elements[1];
+        public Number Z => elements[2];
 
         public Vec3()
         {
@@ -19,7 +19,7 @@ namespace Element
             elements[2] = new Integer(0);
         }
 
-        public Vec3(Integer x, Integer y, Integer z)
+        public Vec3(Number x, Number y, Number z)
         {
             elements[0] = x;
             elements[1] = y;
@@ -34,12 +34,12 @@ namespace Element
         /// <returns></returns>
         public static Vec3 Sum(Vec3 a, Vec3 b)
         {
-            return new Vec3(Integer.Sum(a.X, b.X), Integer.Sum(a.Y, b.Y), Integer.Sum(a.Z, b.Z));
+            return new Vec3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         }
 
         public ElementBase Negate()
         {
-            return new Vec3(X.Negate() as Integer, Y.Negate() as Integer, Z.Negate() as Integer);
+            return new Vec3(X.Negate() as Number, Y.Negate() as Number, Z.Negate() as Number);
         }
     }
 }

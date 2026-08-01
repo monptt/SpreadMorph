@@ -7,8 +7,8 @@ namespace Element
         public override int Rows => 3;
         public override int Columns => 3;
 
-        Integer[] elements = new Integer[9];
-        public override Integer[] Elements => elements;
+        Number[] elements = new Number[9];
+        public override Number[] Elements => elements;
 
         public Mat3()
         {
@@ -21,9 +21,9 @@ namespace Element
             }
         }
 
-        public Mat3(Integer a, Integer b, Integer c,
-                            Integer d, Integer e, Integer f,
-                            Integer g, Integer h, Integer i)
+        public Mat3(Number a, Number b, Number c,
+                            Number d, Number e, Number f,
+                            Number g, Number h, Number i)
         {
             SetElement(0, 0, a);
             SetElement(0, 1, b);
@@ -42,9 +42,9 @@ namespace Element
             for (int i = 0; i < 3; i++)
             {
                 result.Elements[i] =
-                    Integer.Multiply(a.GetElement(i, 0), b.GetElement(0)) +
-                    Integer.Multiply(a.GetElement(i, 1), b.GetElement(1)) +
-                    Integer.Multiply(a.GetElement(i, 2), b.GetElement(2));
+                    Number.Multiply(a.GetElement(i, 0), b.GetElement(0)) +
+                    Number.Multiply(a.GetElement(i, 1), b.GetElement(1)) +
+                    Number.Multiply(a.GetElement(i, 2), b.GetElement(2));
             }
             return result;
         }
@@ -57,9 +57,9 @@ namespace Element
                 for (int j = 0; j < 3; j++)
                 {
                     result.Elements[i * 3 + j] =
-                        Integer.Multiply(a.GetElement(i, 0), b.GetElement(0, j)) +
-                        Integer.Multiply(a.GetElement(i, 1), b.GetElement(1, j)) +
-                        Integer.Multiply(a.GetElement(i, 2), b.GetElement(2, j));
+                        Number.Multiply(a.GetElement(i, 0), b.GetElement(0, j)) +
+                        Number.Multiply(a.GetElement(i, 1), b.GetElement(1, j)) +
+                        Number.Multiply(a.GetElement(i, 2), b.GetElement(2, j));
                 }
             }
             return result;
@@ -72,7 +72,7 @@ namespace Element
             {
                 for (int j = 0; j < Columns; j++)
                 {
-                    result.SetElement(i, j, GetElement(i, j).Negate() as Integer);
+                    result.SetElement(i, j, GetElement(i, j).Negate());
                 }
             }
             return result;

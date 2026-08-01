@@ -4,14 +4,14 @@ namespace Element
     {
         public override int Dim => 4;
 
-        Integer[] elements = new Integer[4];
-        public override Integer[] Elements => elements;
+        Number[] elements = new Number[4];
+        public override Number[] Elements => elements;
 
 
-        public Integer X => elements[0];
-        public Integer Y => elements[1];
-        public Integer Z => elements[2];
-        public Integer W => elements[3];
+        public Number X => elements[0];
+        public Number Y => elements[1];
+        public Number Z => elements[2];
+        public Number W => elements[3];
 
         public Vec4()
         {
@@ -21,7 +21,7 @@ namespace Element
             elements[3] = new Integer(0);
         }
 
-        public Vec4(Integer x, Integer y, Integer z, Integer w)
+        public Vec4(Number x, Number y, Number z, Number w)
         {
             elements[0] = x;
             elements[1] = y;
@@ -37,12 +37,12 @@ namespace Element
         /// <returns></returns>
         public static Vec4 Sum(Vec4 a, Vec4 b)
         {
-            return new Vec4(Integer.Sum(a.X, b.X), Integer.Sum(a.Y, b.Y), Integer.Sum(a.Z, b.Z), Integer.Sum(a.W, b.W));
+            return new Vec4(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
         }
 
         public ElementBase Negate()
         {
-            return new Vec4(X.Negate() as Integer, Y.Negate() as Integer, Z.Negate() as Integer, W.Negate() as Integer);
+            return new Vec4(X.Negate() as Number, Y.Negate() as Number, Z.Negate() as Number, W.Negate() as Number);
         }
     }
 }

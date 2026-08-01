@@ -22,7 +22,7 @@ public partial class Vec4Object : ObjectBase
             ElementBase y = ObjectView.GetCells()[1].Formula.Evaluate();
             ElementBase z = ObjectView.GetCells()[2].Formula.Evaluate();
             ElementBase w = ObjectView.GetCells()[3].Formula.Evaluate();
-            if (x is Integer numX && y is Integer numY && z is Integer numZ && w is Integer numW)
+            if (x is Number numX && y is Number numY && z is Number numZ && w is Number numW)
             {
                 SetElement(new Vec4(numX, numY, numZ, numW));
             }
@@ -34,10 +34,10 @@ public partial class Vec4Object : ObjectBase
     }
     public override ElementBase GetElement()
     {
-        Integer x = ObjectView.GetCells()[0].Element as Integer;
-        Integer y = ObjectView.GetCells()[1].Element as Integer;
-        Integer z = ObjectView.GetCells()[2].Element as Integer;
-        Integer w = ObjectView.GetCells()[3].Element as Integer;
+        Number x = ObjectView.GetCells()[0].Element as Number;
+        Number y = ObjectView.GetCells()[1].Element as Number;
+        Number z = ObjectView.GetCells()[2].Element as Number;
+        Number w = ObjectView.GetCells()[3].Element as Number;
         return new Vec4(x, y, z, w);
     }
 

@@ -21,7 +21,7 @@ public partial class Vec3Object : ObjectBase
             ElementBase x = ObjectView.GetCells()[0].Formula.Evaluate();
             ElementBase y = ObjectView.GetCells()[1].Formula.Evaluate();
             ElementBase z = ObjectView.GetCells()[2].Formula.Evaluate();
-            if (x is Integer numX && y is Integer numY && z is Integer numZ)
+            if (x is Number numX && y is Number numY && z is Number numZ)
             {
                 SetElement(new Vec3(numX, numY, numZ));
             }
@@ -33,9 +33,9 @@ public partial class Vec3Object : ObjectBase
     }
     public override ElementBase GetElement()
     {
-        Integer x = ObjectView.GetCells()[0].Element as Integer;
-        Integer y = ObjectView.GetCells()[1].Element as Integer;
-        Integer z = ObjectView.GetCells()[2].Element as Integer;
+        Number x = ObjectView.GetCells()[0].Element as Number;
+        Number y = ObjectView.GetCells()[1].Element as Number;
+        Number z = ObjectView.GetCells()[2].Element as Number;
         return new Vec3(x, y, z);
     }
 

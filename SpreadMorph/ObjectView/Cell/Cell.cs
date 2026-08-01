@@ -86,6 +86,30 @@ public partial class Cell : Node2D
         this.status = status;
     }
 
+    public void SetElement(Number value)
+    {
+        if (value is Integer valueInt)
+        {
+            SetElement(valueInt);
+            return;
+        }
+
+        if (value is Rational valueRational)
+        {
+            SetElement(valueRational);
+            return;
+        }
+
+        if (value is Complex valueComplex)
+        {
+            SetElement(valueComplex);
+            return;
+        }
+
+        valueLabel.Text = value.ToString();
+        this.element = value;
+    }
+
     public void SetElement(Element.Boolean value)
     {
         valueLabel.Text = value.ToString();

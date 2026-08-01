@@ -5,6 +5,9 @@ namespace Element
     /// </summary>
     public class Real : Number
     {
-
+        public override ElementBase Negate()
+        {
+            return null;
+        }
     }
 }

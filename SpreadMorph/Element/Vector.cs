@@ -4,9 +4,9 @@ namespace Element
     {
         public abstract int Dim { get; }
 
-        public abstract Integer[] Elements { get; }
+        public abstract Number[] Elements { get; }
 
-        public Integer GetElement(int i)
+        public Number GetElement(int i)
         {
             return Elements[i];
         }

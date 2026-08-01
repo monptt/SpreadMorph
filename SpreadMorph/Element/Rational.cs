@@ -42,5 +42,10 @@ namespace Element
         {
             return Multiply(a, b);
         }
+
+        public override ElementBase Negate()
+        {
+            return new Rational(numerator.Negate() as Integer, denominator);
+        }
     }
 }

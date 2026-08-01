@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 数
     /// </summary>
-    public class Integer : Number, IInverse, INegate
+    public class Integer : Number, IInverse
     {
         int value;
         public int Value => value;
@@ -114,7 +114,7 @@ namespace Element
             return new Rational(new Integer(1), this);
         }
 
-        public ElementBase Negate()
+        public override ElementBase Negate()
         {
             return new Integer(-value);
         }

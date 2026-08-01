@@ -5,16 +5,16 @@ namespace Element
         public abstract int Rows { get; }
         public abstract int Columns { get; }
 
-        public abstract Integer[] Elements { get; }
+        public abstract Number[] Elements { get; }
 
-        public Integer GetElement(int i, int j)
+        public Number GetElement(int i, int j)
         {
             return Elements[i * Columns + j];
         }
 
-        public void SetElement(int i, int j, Integer element)
+        public void SetElement(int i, int j, ElementBase element)
         {
-            Elements[i * Columns + j] = element;
+            Elements[i * Columns + j] = element as Number;
         }
 
         public abstract ElementBase Negate();

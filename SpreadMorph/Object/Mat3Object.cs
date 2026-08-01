@@ -37,7 +37,7 @@ public partial class Mat3Object : ObjectBase
             ElementBase g = ObjectView.GetCells()[6].Formula.Evaluate();
             ElementBase h = ObjectView.GetCells()[7].Formula.Evaluate();
             ElementBase i = ObjectView.GetCells()[8].Formula.Evaluate();
-            if (a is Integer numA && b is Integer numB && c is Integer numC && d is Integer numD && e is Integer numE && f is Integer numF && g is Integer numG && h is Integer numH && i is Integer numI)
+            if (a is Number numA && b is Number numB && c is Number numC && d is Number numD && e is Number numE && f is Number numF && g is Number numG && h is Number numH && i is Number numI)
             {
                 SetElement(new Mat3(numA, numB, numC, numD, numE, numF, numG, numH, numI));
             }
@@ -50,15 +50,15 @@ public partial class Mat3Object : ObjectBase
 
     public override ElementBase GetElement()
     {
-        Integer a = ObjectView.GetCells()[0].Element as Integer;
-        Integer b = ObjectView.GetCells()[1].Element as Integer;
-        Integer c = ObjectView.GetCells()[2].Element as Integer;
-        Integer d = ObjectView.GetCells()[3].Element as Integer;
-        Integer e = ObjectView.GetCells()[4].Element as Integer;
-        Integer f = ObjectView.GetCells()[5].Element as Integer;
-        Integer g = ObjectView.GetCells()[6].Element as Integer;
-        Integer h = ObjectView.GetCells()[7].Element as Integer;
-        Integer i = ObjectView.GetCells()[8].Element as Integer;
+        Number a = ObjectView.GetCells()[0].Element as Number;
+        Number b = ObjectView.GetCells()[1].Element as Number;
+        Number c = ObjectView.GetCells()[2].Element as Number;
+        Number d = ObjectView.GetCells()[3].Element as Number;
+        Number e = ObjectView.GetCells()[4].Element as Number;
+        Number f = ObjectView.GetCells()[5].Element as Number;
+        Number g = ObjectView.GetCells()[6].Element as Number;
+        Number h = ObjectView.GetCells()[7].Element as Number;
+        Number i = ObjectView.GetCells()[8].Element as Number;
         return new Mat3(a, b, c, d, e, f, g, h, i);
     }
 
