@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 有理数クラス
     /// </summary>
-    public class Rational : ElementBase, IInverse
+    public class Rational : Number, IInverse
     {
         Integer numerator = new Integer(0);
         public Integer Numerator => numerator;

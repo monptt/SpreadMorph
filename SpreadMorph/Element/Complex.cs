@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 複素数
     /// </summary>
-    public class Complex : ElementBase, INegate
+    public class Complex : Number, INegate
     {
         Integer re;
         Integer im;

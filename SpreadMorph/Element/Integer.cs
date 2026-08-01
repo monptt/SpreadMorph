@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 数
     /// </summary>
-    public class Integer : ElementBase, IInverse, INegate
+    public class Integer : Number, IInverse, INegate
     {
         int value;
         public int Value => value;
