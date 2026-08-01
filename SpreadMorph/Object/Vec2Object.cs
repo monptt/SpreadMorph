@@ -1,12 +1,13 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Element;
 
 public partial class Vec2Object : ObjectBase
 {
     public override ObjectType Type => ObjectType.Vec2;
 
-    Vec2Element element = new Vec2Element(new IntegerElement(0), new IntegerElement(0));
+    Vec2 element = new Vec2(new Integer(0), new Integer(0));
 
     protected override void InitView()
     {
@@ -25,25 +26,25 @@ public partial class Vec2Object : ObjectBase
         {
             ElementBase x = ObjectView.GetCells()[0].Formula.Evaluate();
             ElementBase y = ObjectView.GetCells()[1].Formula.Evaluate();
-            if (x is IntegerElement numX && y is IntegerElement numY)
+            if (x is Integer numX && y is Integer numY)
             {
-                SetElement(new Vec2Element(numX, numY));
+                SetElement(new Vec2(numX, numY));
             }
             else
             {
-                SetElement(new Vec2Element(new IntegerElement(0), new IntegerElement(0)));
+                SetElement(new Vec2(new Integer(0), new Integer(0)));
             }
         }
     }
 
     public override ElementBase GetElement()
     {
-        IntegerElement x = ObjectView.GetCells()[0].Element as IntegerElement;
-        IntegerElement y = ObjectView.GetCells()[1].Element as IntegerElement;
-        return new Vec2Element(x, y);
+        Integer x = ObjectView.GetCells()[0].Element as Integer;
+        Integer y = ObjectView.GetCells()[1].Element as Integer;
+        return new Vec2(x, y);
     }
 
-    void SetElement(Vec2Element element)
+    void SetElement(Vec2 element)
     {
         this.element = element;
         ObjectView.GetCells()[0].SetElement(element.X);
@@ -53,7 +54,7 @@ public partial class Vec2Object : ObjectBase
     protected override bool EvaluateFormula(Formula formula)
     {
         ElementBase result = formula.Evaluate();
-        if (result is Vec2Element vec2Element)
+        if (result is Vec2 vec2Element)
         {
             SetElement(vec2Element);
             return true;

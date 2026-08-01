@@ -1,19 +1,20 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Element;
 
 public class PolynomialObject : ObjectBase
 {
     public override ObjectType Type => ObjectType.Polynomial;
 
-    PolynomialElement element = new PolynomialElement();
+    Polynomial element = new Polynomial();
 
     Cell Cell => ObjectView.GetCells()[0];
 
     protected override void InitView()
     {
         SetIsOneObject(true);
-        SetElement(new PolynomialElement());
+        SetElement(new Polynomial());
         this.SetFormula("0");
         Cell.SetFormula("0");
     }
@@ -28,13 +29,13 @@ public class PolynomialObject : ObjectBase
         else
         {
             ElementBase element = Cell.Formula.Evaluate();
-            if (element is PolynomialElement polynomialElement)
+            if (element is Polynomial polynomialElement)
             {
                 SetElement(polynomialElement);
             }
             else
             {
-                SetElement(new PolynomialElement());
+                SetElement(new Polynomial());
             }
         }
     }
@@ -47,19 +48,19 @@ public class PolynomialObject : ObjectBase
     protected override bool EvaluateFormula(Formula formula)
     {
         ElementBase result = formula.Evaluate();
-        if (result is PolynomialElement polynomialElement)
+        if (result is Polynomial polynomialElement)
         {
             SetElement(polynomialElement);
             return true;
         }
         else
         {
-            SetElement(new PolynomialElement());
+            SetElement(new Polynomial());
             return false;
         }
     }
 
-    void SetElement(PolynomialElement element)
+    void SetElement(Polynomial element)
     {
         this.element = element;
         Cell.SetElement(element);

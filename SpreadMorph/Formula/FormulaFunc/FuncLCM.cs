@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Element;
 
 /// <summary>
 /// 最小公倍数
@@ -14,9 +15,9 @@ public class FuncLCM : FormulaFuncBase
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <returns></returns>
-    public static IntegerElement LCM(IntegerElement a, IntegerElement b)
+    public static Integer LCM(Integer a, Integer b)
     {
         ElementBase ret = a * b / FuncGCD.GCD(a, b);
-        return ret as IntegerElement;
+        return ret as Integer;
     }
 }

@@ -1,12 +1,13 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Element;
 
 public partial class ComplexObject : ObjectBase
 {
     public override ObjectType Type => ObjectType.Complex;
 
-    ComplexElement element = new ComplexElement(new IntegerElement(0), new IntegerElement(0));
+    Complex element = new Complex(new Integer(0), new Integer(0));
 
     Cell Cell => ObjectView.GetCells()[0];
 
@@ -14,7 +15,7 @@ public partial class ComplexObject : ObjectBase
     protected override void InitView()
     {
         this.SetIsOneObject(true);
-        SetElement(new ComplexElement(new IntegerElement(0), new IntegerElement(0)));
+        SetElement(new Complex(new Integer(0), new Integer(0)));
         Cell.SetFormula("0");
         this.SetFormula("0");
     }
@@ -25,26 +26,26 @@ public partial class ComplexObject : ObjectBase
         {
             ElementBase element = this.Formula.Evaluate();
 
-            if (element is ComplexElement complexElement)
+            if (element is Complex complexElement)
             {
                 SetElement(complexElement);
             }
             else
             {
-                SetElement(new ComplexElement(new IntegerElement(0), new IntegerElement(0)));
+                SetElement(new Complex(new Integer(0), new Integer(0)));
             }
         }
         else
         {
             ElementBase element = Cell.Formula.Evaluate();
 
-            if (element is ComplexElement complexElement)
+            if (element is Complex complexElement)
             {
                 SetElement(complexElement);
             }
             else
             {
-                SetElement(new ComplexElement(new IntegerElement(0), new IntegerElement(0)));
+                SetElement(new Complex(new Integer(0), new Integer(0)));
             }
         }
     }
@@ -53,7 +54,7 @@ public partial class ComplexObject : ObjectBase
     {
         ElementBase result = formula.Evaluate();
 
-        if (result is ComplexElement complexElement)
+        if (result is Complex complexElement)
         {
             SetElement(complexElement);
             return true;
@@ -69,7 +70,7 @@ public partial class ComplexObject : ObjectBase
         return element;
     }
 
-    void SetElement(ComplexElement element)
+    void SetElement(Complex element)
     {
         this.element = element;
         Cell.SetElement(element);

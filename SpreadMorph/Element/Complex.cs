@@ -1,61 +1,64 @@
-/// <summary>
-/// 複素数
-/// </summary>
-public class ComplexElement : ElementBase, INegate
+namespace Element
 {
-    IntegerElement re;
-    IntegerElement im;
-    public IntegerElement Re => re;
-    public IntegerElement Im => im;
-
-    public ComplexElement(IntegerElement re, IntegerElement im)
-    {
-        this.re = re;
-        this.im = im;
-    }
-
     /// <summary>
-    /// 和
+    /// 複素数
     /// </summary>
-    /// <param name="a"></param>
-    /// <param name="b"></param>
-    /// <returns></returns>
-    public static ComplexElement Sum(ComplexElement a, ComplexElement b)
+    public class Complex : ElementBase, INegate
     {
-        return new ComplexElement(a.Re + b.Re, a.Im + b.Im);
-    }
+        Integer re;
+        Integer im;
+        public Integer Re => re;
+        public Integer Im => im;
 
-    public static ComplexElement Sum(ComplexElement a, IntegerElement b)
-    {
-        return new ComplexElement(a.Re + b, a.Im);
-    }
+        public Complex(Integer re, Integer im)
+        {
+            this.re = re;
+            this.im = im;
+        }
 
-    public static ComplexElement Subtract(ComplexElement a, ComplexElement b)
-    {
-        return new ComplexElement(a.Re - b.Re, a.Im - b.Im);
-    }
+        /// <summary>
+        /// 和
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static Complex Sum(Complex a, Complex b)
+        {
+            return new Complex(a.Re + b.Re, a.Im + b.Im);
+        }
 
-    /// <summary>
-    /// 積
-    /// </summary>
-    /// <param name="a"></param>
-    /// <param name="b"></param>
-    /// <returns></returns>
-    public static ComplexElement Multiply(ComplexElement a, ComplexElement b)
-    {
-        return new ComplexElement(
-            a.Re * b.Re - a.Im * b.Im,
-            a.Re * b.Im + a.Im * b.Re
-        );
-    }
+        public static Complex Sum(Complex a, Integer b)
+        {
+            return new Complex(a.Re + b, a.Im);
+        }
 
-    public static ComplexElement Multiply(ComplexElement a, IntegerElement b)
-    {
-        return new ComplexElement(a.Re * b, a.Im * b);
-    }
+        public static Complex Subtract(Complex a, Complex b)
+        {
+            return new Complex(a.Re - b.Re, a.Im - b.Im);
+        }
 
-    public ElementBase Negate()
-    {
-        return new ComplexElement(new IntegerElement(-re.Value), new IntegerElement(-im.Value));
+        /// <summary>
+        /// 積
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static Complex Multiply(Complex a, Complex b)
+        {
+            return new Complex(
+                a.Re * b.Re - a.Im * b.Im,
+                a.Re * b.Im + a.Im * b.Re
+            );
+        }
+
+        public static Complex Multiply(Complex a, Integer b)
+        {
+            return new Complex(a.Re * b, a.Im * b);
+        }
+
+        public ElementBase Negate()
+        {
+            return new Complex(new Integer(-re.Value), new Integer(-im.Value));
+        }
     }
 }

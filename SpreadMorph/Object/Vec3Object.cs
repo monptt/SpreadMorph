@@ -1,12 +1,13 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Element;
 
 public partial class Vec3Object : ObjectBase
 {
     public override ObjectType Type => ObjectType.Vec3;
 
-    Vec3Element element = new Vec3Element(new IntegerElement(0), new IntegerElement(0), new IntegerElement(0));
+    Vec3 element = new Vec3(new Integer(0), new Integer(0), new Integer(0));
 
     public override void UpdateObject()
     {
@@ -20,34 +21,34 @@ public partial class Vec3Object : ObjectBase
             ElementBase x = ObjectView.GetCells()[0].Formula.Evaluate();
             ElementBase y = ObjectView.GetCells()[1].Formula.Evaluate();
             ElementBase z = ObjectView.GetCells()[2].Formula.Evaluate();
-            if (x is IntegerElement numX && y is IntegerElement numY && z is IntegerElement numZ)
+            if (x is Integer numX && y is Integer numY && z is Integer numZ)
             {
-                SetElement(new Vec3Element(numX, numY, numZ));
+                SetElement(new Vec3(numX, numY, numZ));
             }
             else
             {
-                SetElement(new Vec3Element(new IntegerElement(0), new IntegerElement(0), new IntegerElement(0)));
+                SetElement(new Vec3(new Integer(0), new Integer(0), new Integer(0)));
             }
         }
     }
     public override ElementBase GetElement()
     {
-        IntegerElement x = ObjectView.GetCells()[0].Element as IntegerElement;
-        IntegerElement y = ObjectView.GetCells()[1].Element as IntegerElement;
-        IntegerElement z = ObjectView.GetCells()[2].Element as IntegerElement;
-        return new Vec3Element(x, y, z);
+        Integer x = ObjectView.GetCells()[0].Element as Integer;
+        Integer y = ObjectView.GetCells()[1].Element as Integer;
+        Integer z = ObjectView.GetCells()[2].Element as Integer;
+        return new Vec3(x, y, z);
     }
 
     protected override void InitView()
     {
 
-        SetElement(new Vec3Element(new IntegerElement(0), new IntegerElement(0), new IntegerElement(0)));
+        SetElement(new Vec3(new Integer(0), new Integer(0), new Integer(0)));
         ObjectView.GetCells()[0].SetFormula("0");
         ObjectView.GetCells()[1].SetFormula("0");
         ObjectView.GetCells()[2].SetFormula("0");
     }
 
-    void SetElement(Vec3Element element)
+    void SetElement(Vec3 element)
     {
         this.element = element;
         ObjectView.GetCells()[0].SetElement(element.X);
@@ -58,7 +59,7 @@ public partial class Vec3Object : ObjectBase
     protected override bool EvaluateFormula(Formula formula)
     {
         ElementBase element = formula.Evaluate();
-        if (element is Vec3Element vec3Element)
+        if (element is Vec3 vec3Element)
         {
             SetElement(vec3Element);
             return true;

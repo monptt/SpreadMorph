@@ -1,8 +1,11 @@
+using Element;
+
+
 public partial class Mat2Object : ObjectBase
 {
     public override ObjectType Type => ObjectType.Mat2;
 
-    Mat2Element element = new Mat2Element();
+    Mat2 element = new Mat2();
 
     protected override void InitView()
     {
@@ -25,27 +28,27 @@ public partial class Mat2Object : ObjectBase
             ElementBase b = ObjectView.GetCells()[1].Formula.Evaluate();
             ElementBase c = ObjectView.GetCells()[2].Formula.Evaluate();
             ElementBase d = ObjectView.GetCells()[3].Formula.Evaluate();
-            if (a is IntegerElement numA && b is IntegerElement numB && c is IntegerElement numC && d is IntegerElement numD)
+            if (a is Integer numA && b is Integer numB && c is Integer numC && d is Integer numD)
             {
-                SetElement(new Mat2Element(numA, numB, numC, numD));
+                SetElement(new Mat2(numA, numB, numC, numD));
             }
             else
             {
-                SetElement(new Mat2Element());
+                SetElement(new Mat2());
             }
         }
     }
 
     public override ElementBase GetElement()
     {
-        IntegerElement a = ObjectView.GetCells()[0].Element as IntegerElement;
-        IntegerElement b = ObjectView.GetCells()[1].Element as IntegerElement;
-        IntegerElement c = ObjectView.GetCells()[2].Element as IntegerElement;
-        IntegerElement d = ObjectView.GetCells()[3].Element as IntegerElement;
-        return new Mat2Element(a, b, c, d);
+        Integer a = ObjectView.GetCells()[0].Element as Integer;
+        Integer b = ObjectView.GetCells()[1].Element as Integer;
+        Integer c = ObjectView.GetCells()[2].Element as Integer;
+        Integer d = ObjectView.GetCells()[3].Element as Integer;
+        return new Mat2(a, b, c, d);
     }
 
-    void SetElement(Mat2Element element)
+    void SetElement(Mat2 element)
     {
         this.element = element;
         ObjectView.GetCells()[0].SetElement(element.Elements[0]);
@@ -57,14 +60,14 @@ public partial class Mat2Object : ObjectBase
     protected override bool EvaluateFormula(Formula formula)
     {
         ElementBase result = formula.Evaluate();
-        if (result is Mat2Element mat2Element)
+        if (result is Mat2 mat2Element)
         {
             SetElement(mat2Element);
             return true;
         }
         else
         {
-            SetElement(new Mat2Element());
+            SetElement(new Mat2());
         }
         return false;
     }

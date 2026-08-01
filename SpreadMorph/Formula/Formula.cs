@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Element;
 
 /// <summary>
 /// 数式クラス
@@ -108,7 +109,7 @@ public class Formula
             // 虚数単位
             if (tokens.First().TokenStr == "i")
             {
-                return new ComplexElement(new IntegerElement(0), new IntegerElement(1));
+                return new Complex(new Integer(0), new Integer(1));
             }
 
             // bool
@@ -124,7 +125,7 @@ public class Formula
             // 変数
             if (tokens.First().TokenStr == "x")
             {
-                return new PolynomialElement(new IntegerElement(1), new IntegerElement(1));
+                return new Polynomial(new Integer(1), new Integer(1));
             }
 
             // 数値のみの想定
@@ -133,16 +134,16 @@ public class Formula
             {
                 return null;
             }
-            return new IntegerElement(value);
+            return new Integer(value);
         }
 
         // 純虚数
         if (tokens.Count == 2 && tokens.Last().TokenStr == "i")
         {
             ElementBase im = Evaluate(tokens.Skip(0).Take(1).ToList());
-            if (im is IntegerElement imElement)
+            if (im is Integer imElement)
             {
-                return new ComplexElement(new IntegerElement(0), imElement);
+                return new Complex(new Integer(0), imElement);
             }
         }
 
@@ -359,7 +360,7 @@ public class Formula
             }
             if (funcName == "GCD")
             {
-                if (argElements.Count == 2 && argElements[0] is IntegerElement a && argElements[1] is IntegerElement b)
+                if (argElements.Count == 2 && argElements[0] is Integer a && argElements[1] is Integer b)
                 {
                     return FuncGCD.GCD(a, b);
                 }
@@ -367,7 +368,7 @@ public class Formula
             }
             if (funcName == "LCM")
             {
-                if (argElements.Count == 2 && argElements[0] is IntegerElement a && argElements[1] is IntegerElement b)
+                if (argElements.Count == 2 && argElements[0] is Integer a && argElements[1] is Integer b)
                 {
                     return FuncLCM.LCM(a, b);
                 }
@@ -531,7 +532,7 @@ public class Formula
         ElementBase xElement = Evaluate(tokens.Skip(1).Take(separatorIndex - 1).ToList());
         ElementBase yElement = Evaluate(tokens.Skip(separatorIndex + 1).Take(tokens.Count - separatorIndex - 2).ToList());
 
-        if (xElement is IntegerElement x && yElement is IntegerElement y)
+        if (xElement is Integer x && yElement is Integer y)
         {
             return new GridPos(x.Value, y.Value);
         }

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Element;
 
 public enum CellStatus
 {
@@ -91,13 +92,13 @@ public partial class Cell : Node2D
         this.element = value;
     }
 
-    public void SetElement(IntegerElement value)
+    public void SetElement(Integer value)
     {
         valueLabel.Text = value.ToString();
         this.element = value;
     }
 
-    public void SetElement(RationalElement value)
+    public void SetElement(Rational value)
     {
         if (value.Denominator.Value == 1)
         {
@@ -114,7 +115,7 @@ public partial class Cell : Node2D
         this.element = value;
     }
 
-    public void SetElement(ComplexElement value)
+    public void SetElement(Complex value)
     {
         if (value.Im.Value == 0)
         {
@@ -163,19 +164,19 @@ public partial class Cell : Node2D
         this.element = value;
     }
 
-    public void SetElement(PolynomialElement value)
+    public void SetElement(Polynomial value)
     {
         valueLabel.Text = value.ToString();
         this.element = value;
     }
 
-    public void SetElement(FunctionElement value)
+    public void SetElement(Function value)
     {
         valueLabel.Text = value.ToString();
         this.element = value;
     }
 
-    public void SetElement(StringElement value)
+    public void SetElement(Element.String value)
     {
         valueLabel.Text = $"{value.Value}";
         this.element = value;

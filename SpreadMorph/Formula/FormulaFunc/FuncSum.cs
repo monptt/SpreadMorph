@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Element;
 
 /// <summary>
 /// 引数の合計を計算する
@@ -16,27 +17,27 @@ public class FuncSum : FormulaFuncBase
     public static ElementBase Sum(ElementBase a, ElementBase b)
     {
         {
-            if (a is IntegerElement integerElementA && b is IntegerElement integerElementB)
+            if (a is Integer integerElementA && b is Integer integerElementB)
             {
-                return IntegerElement.Sum(integerElementA, integerElementB);
+                return Integer.Sum(integerElementA, integerElementB);
             }
-            if (a is ComplexElement complexElementA && b is ComplexElement complexElementB)
+            if (a is Complex complexElementA && b is Complex complexElementB)
             {
-                return ComplexElement.Sum(complexElementA, complexElementB);
+                return Complex.Sum(complexElementA, complexElementB);
             }
         }
 
         // 多項式
         {
-            if (a is PolynomialElement polynomialElementA && b is PolynomialElement polynomialElementB)
+            if (a is Polynomial polynomialElementA && b is Polynomial polynomialElementB)
             {
-                return PolynomialElement.Add(polynomialElementA, polynomialElementB);
+                return Polynomial.Add(polynomialElementA, polynomialElementB);
             }
         }
         {
-            if (a is PolynomialElement polynomialElementA && b is IntegerElement integerElementB)
+            if (a is Polynomial polynomialElementA && b is Integer integerElementB)
             {
-                return PolynomialElement.Add(polynomialElementA, new PolynomialElement(integerElementB));
+                return Polynomial.Add(polynomialElementA, new Polynomial(integerElementB));
             }
         }
 
@@ -64,7 +65,7 @@ public class FuncSum : FormulaFuncBase
         bool isComplex = false;
         foreach (ElementBase arg in args)
         {
-            if (arg is ComplexElement)
+            if (arg is Complex)
             {
                 isComplex = true;
                 break;
@@ -72,53 +73,53 @@ public class FuncSum : FormulaFuncBase
         }
         if (isComplex)
         {
-            ComplexElement sum = new ComplexElement(new IntegerElement(0), new IntegerElement(0));
+            Complex sum = new Complex(new Integer(0), new Integer(0));
             foreach (ElementBase arg in args)
             {
-                if (arg is ComplexElement complexElement)
+                if (arg is Complex complexElement)
                 {
-                    sum = ComplexElement.Sum(sum, complexElement);
+                    sum = Complex.Sum(sum, complexElement);
                 }
-                else if (arg is IntegerElement integerElement)
+                else if (arg is Integer integerElement)
                 {
-                    sum = ComplexElement.Sum(sum, integerElement);
+                    sum = Complex.Sum(sum, integerElement);
                 }
             }
             return sum;
         }
 
-        if (args[0] is IntegerElement)
+        if (args[0] is Integer)
         {
-            IntegerElement sum = new IntegerElement(0);
+            Integer sum = new Integer(0);
             foreach (ElementBase arg in args)
             {
-                if (arg is IntegerElement numberElement)
+                if (arg is Integer numberElement)
                 {
-                    sum = IntegerElement.Sum(sum, numberElement);
+                    sum = Integer.Sum(sum, numberElement);
                 }
             }
             return sum;
         }
-        else if (args[0] is Vec2Element)
+        else if (args[0] is Vec2)
         {
-            Vec2Element sum = new Vec2Element(new IntegerElement(0), new IntegerElement(0));
+            Vec2 sum = new Vec2(new Integer(0), new Integer(0));
             foreach (ElementBase arg in args)
             {
-                if (arg is Vec2Element vec2Element)
+                if (arg is Vec2 vec2Element)
                 {
-                    sum = Vec2Element.Sum(sum, vec2Element);
+                    sum = Vec2.Sum(sum, vec2Element);
                 }
             }
             return sum;
         }
-        else if (args[0] is Vec3Element)
+        else if (args[0] is Vec3)
         {
-            Vec3Element sum = new Vec3Element(new IntegerElement(0), new IntegerElement(0), new IntegerElement(0));
+            Vec3 sum = new Vec3(new Integer(0), new Integer(0), new Integer(0));
             foreach (ElementBase arg in args)
             {
-                if (arg is Vec3Element vec3Element)
+                if (arg is Vec3 vec3Element)
                 {
-                    sum = Vec3Element.Sum(sum, vec3Element);
+                    sum = Vec3.Sum(sum, vec3Element);
                 }
             }
             return sum;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using Godot;
+using Element;
+
 /// <summary>
 /// 割り算
 /// </summary>
@@ -11,31 +12,31 @@ public class FuncDivide : FormulaFuncBase
     public static ElementBase Divide(ElementBase dividend, ElementBase divisor)
     {
         {
-            if (dividend is IntegerElement a && divisor is IntegerElement b)
+            if (dividend is Integer a && divisor is Integer b)
             {
-                return new RationalElement(a, b);
+                return new Rational(a, b);
             }
         }
 
         {
-            if (dividend is RationalElement a && divisor is IntegerElement b)
+            if (dividend is Rational a && divisor is Integer b)
             {
-                return a * (b.Inverse() as RationalElement);
+                return a * (b.Inverse() as Rational);
             }
         }
 
 
         {
-            if (dividend is IntegerElement a && divisor is RationalElement b)
+            if (dividend is Integer a && divisor is Rational b)
             {
-                return a * (b.Inverse() as RationalElement);
+                return a * (b.Inverse() as Rational);
             }
         }
 
         {
-            if (dividend is RationalElement a && divisor is RationalElement b)
+            if (dividend is Rational a && divisor is Rational b)
             {
-                return a * (b.Inverse() as RationalElement);
+                return a * (b.Inverse() as Rational);
             }
         }
 

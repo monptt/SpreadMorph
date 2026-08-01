@@ -1,8 +1,10 @@
+using Element;
+
 public partial class Mat3Object : ObjectBase
 {
     public override ObjectType Type => ObjectType.Mat3;
 
-    Mat3Element element = new Mat3Element();
+    Mat3 element = new Mat3();
 
     protected override void InitView()
     {
@@ -35,32 +37,32 @@ public partial class Mat3Object : ObjectBase
             ElementBase g = ObjectView.GetCells()[6].Formula.Evaluate();
             ElementBase h = ObjectView.GetCells()[7].Formula.Evaluate();
             ElementBase i = ObjectView.GetCells()[8].Formula.Evaluate();
-            if (a is IntegerElement numA && b is IntegerElement numB && c is IntegerElement numC && d is IntegerElement numD && e is IntegerElement numE && f is IntegerElement numF && g is IntegerElement numG && h is IntegerElement numH && i is IntegerElement numI)
+            if (a is Integer numA && b is Integer numB && c is Integer numC && d is Integer numD && e is Integer numE && f is Integer numF && g is Integer numG && h is Integer numH && i is Integer numI)
             {
-                SetElement(new Mat3Element(numA, numB, numC, numD, numE, numF, numG, numH, numI));
+                SetElement(new Mat3(numA, numB, numC, numD, numE, numF, numG, numH, numI));
             }
             else
             {
-                SetElement(new Mat3Element());
+                SetElement(new Mat3());
             }
         }
     }
 
     public override ElementBase GetElement()
     {
-        IntegerElement a = ObjectView.GetCells()[0].Element as IntegerElement;
-        IntegerElement b = ObjectView.GetCells()[1].Element as IntegerElement;
-        IntegerElement c = ObjectView.GetCells()[2].Element as IntegerElement;
-        IntegerElement d = ObjectView.GetCells()[3].Element as IntegerElement;
-        IntegerElement e = ObjectView.GetCells()[4].Element as IntegerElement;
-        IntegerElement f = ObjectView.GetCells()[5].Element as IntegerElement;
-        IntegerElement g = ObjectView.GetCells()[6].Element as IntegerElement;
-        IntegerElement h = ObjectView.GetCells()[7].Element as IntegerElement;
-        IntegerElement i = ObjectView.GetCells()[8].Element as IntegerElement;
-        return new Mat3Element(a, b, c, d, e, f, g, h, i);
+        Integer a = ObjectView.GetCells()[0].Element as Integer;
+        Integer b = ObjectView.GetCells()[1].Element as Integer;
+        Integer c = ObjectView.GetCells()[2].Element as Integer;
+        Integer d = ObjectView.GetCells()[3].Element as Integer;
+        Integer e = ObjectView.GetCells()[4].Element as Integer;
+        Integer f = ObjectView.GetCells()[5].Element as Integer;
+        Integer g = ObjectView.GetCells()[6].Element as Integer;
+        Integer h = ObjectView.GetCells()[7].Element as Integer;
+        Integer i = ObjectView.GetCells()[8].Element as Integer;
+        return new Mat3(a, b, c, d, e, f, g, h, i);
     }
 
-    void SetElement(Mat3Element element)
+    void SetElement(Mat3 element)
     {
         this.element = element;
         ObjectView.GetCells()[0].SetElement(element.Elements[0]);
@@ -77,14 +79,14 @@ public partial class Mat3Object : ObjectBase
     protected override bool EvaluateFormula(Formula formula)
     {
         ElementBase result = formula.Evaluate();
-        if (result is Mat3Element mat3Element)
+        if (result is Mat3 mat3Element)
         {
             SetElement(mat3Element);
             return true;
         }
         else
         {
-            SetElement(new Mat3Element());
+            SetElement(new Mat3());
         }
         return false;
     }

@@ -1,10 +1,13 @@
-/// <summary>
-/// 関数
-/// </summary>
-public class FunctionElement : ElementBase
+namespace Element
 {
-    public override string ToString()
+    /// <summary>
+    /// 関数
+    /// </summary>
+    public class Function : ElementBase
     {
-        return "function";
+        public override string ToString()
+        {
+            return "function";
+        }
     }
 }

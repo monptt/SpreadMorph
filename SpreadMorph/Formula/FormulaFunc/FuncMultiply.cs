@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Element;
 
 /// <summary>
 /// 引数の合計を計算する
@@ -17,60 +18,60 @@ public class FuncMultiply : FormulaFuncBase
     {
         // 整数、複素数
         {
-            if (a is IntegerElement integerElementA && b is IntegerElement integerElementB)
+            if (a is Integer integerElementA && b is Integer integerElementB)
             {
-                return IntegerElement.Multiply(integerElementA, integerElementB);
+                return Integer.Multiply(integerElementA, integerElementB);
             }
-            if (a is ComplexElement complexElementA && b is ComplexElement complexElementB)
+            if (a is Complex complexElementA && b is Complex complexElementB)
             {
-                return ComplexElement.Multiply(complexElementA, complexElementB);
+                return Complex.Multiply(complexElementA, complexElementB);
             }
         }
 
 
         // 多項式
         {
-            if (a is PolynomialElement polynomialElementA && b is IntegerElement integerElementB)
+            if (a is Polynomial polynomialElementA && b is Integer integerElementB)
             {
-                return PolynomialElement.Multiply(polynomialElementA, integerElementB);
+                return Polynomial.Multiply(polynomialElementA, integerElementB);
             }
-            if (a is IntegerElement integerElementA && b is PolynomialElement polynomialElementB)
+            if (a is Integer integerElementA && b is Polynomial polynomialElementB)
             {
-                return PolynomialElement.Multiply(polynomialElementB, integerElementA);
+                return Polynomial.Multiply(polynomialElementB, integerElementA);
             }
         }
 
         // 行列・ベクトル
         {
-            if (a is Mat2Element mat2ElementA)
+            if (a is Mat2 mat2ElementA)
             {
-                if (b is Vec2Element vec2ElementB)
+                if (b is Vec2 vec2ElementB)
                 {
                     return mat2ElementA * vec2ElementB;
                 }
-                if (b is Mat2Element mat2ElementB)
+                if (b is Mat2 mat2ElementB)
                 {
                     return mat2ElementA * mat2ElementB;
                 }
             }
-            if (a is Mat3Element mat3ElementA)
+            if (a is Mat3 mat3ElementA)
             {
-                if (b is Vec3Element vec3ElementB)
+                if (b is Vec3 vec3ElementB)
                 {
                     return mat3ElementA * vec3ElementB;
                 }
-                if (b is Mat3Element mat3ElementB)
+                if (b is Mat3 mat3ElementB)
                 {
                     return mat3ElementA * mat3ElementB;
                 }
             }
-            if (a is Mat4Element mat4ElementA)
+            if (a is Mat4 mat4ElementA)
             {
-                if (b is Vec4Element vec4ElementB)
+                if (b is Vec4 vec4ElementB)
                 {
                     return mat4ElementA * vec4ElementB;
                 }
-                if (b is Mat4Element mat4ElementB)
+                if (b is Mat4 mat4ElementB)
                 {
                     return mat4ElementA * mat4ElementB;
                 }
@@ -101,7 +102,7 @@ public class FuncMultiply : FormulaFuncBase
         bool isComplex = false;
         foreach (ElementBase arg in args)
         {
-            if (arg is ComplexElement)
+            if (arg is Complex)
             {
                 isComplex = true;
                 break;
@@ -109,30 +110,30 @@ public class FuncMultiply : FormulaFuncBase
         }
         if (isComplex)
         {
-            ComplexElement product = new ComplexElement(new IntegerElement(1), new IntegerElement(0));
+            Complex product = new Complex(new Integer(1), new Integer(0));
             foreach (ElementBase arg in args)
             {
-                if (arg is ComplexElement complexElement)
+                if (arg is Complex complexElement)
                 {
-                    product = ComplexElement.Multiply(product, complexElement);
+                    product = Complex.Multiply(product, complexElement);
                 }
-                else if (arg is IntegerElement integerElement)
+                else if (arg is Integer integerElement)
                 {
-                    product = ComplexElement.Multiply(product, integerElement);
+                    product = Complex.Multiply(product, integerElement);
                 }
             }
             return product;
         }
 
 
-        if (args[0] is IntegerElement)
+        if (args[0] is Integer)
         {
-            IntegerElement product = new IntegerElement(1);
+            Integer product = new Integer(1);
             foreach (ElementBase arg in args)
             {
-                if (arg is IntegerElement numberElement)
+                if (arg is Integer numberElement)
                 {
-                    product = IntegerElement.Multiply(product, numberElement);
+                    product = Integer.Multiply(product, numberElement);
                 }
             }
             return product;

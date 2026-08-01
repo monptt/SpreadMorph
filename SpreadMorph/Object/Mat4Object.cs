@@ -1,8 +1,10 @@
+using Element;
+
 public partial class Mat4Object : ObjectBase
 {
     public override ObjectType Type => ObjectType.Mat4;
 
-    Mat4Element element = new Mat4Element();
+    Mat4 element = new Mat4();
 
     protected override void InitView()
     {
@@ -49,39 +51,39 @@ public partial class Mat4Object : ObjectBase
             ElementBase n = ObjectView.GetCells()[13].Formula.Evaluate();
             ElementBase o = ObjectView.GetCells()[14].Formula.Evaluate();
             ElementBase p = ObjectView.GetCells()[15].Formula.Evaluate();
-            if (a is IntegerElement numA && b is IntegerElement numB && c is IntegerElement numC && d is IntegerElement numD && e is IntegerElement numE && f is IntegerElement numF && g is IntegerElement numG && h is IntegerElement numH && i is IntegerElement numI && j is IntegerElement numJ && k is IntegerElement numK && l is IntegerElement numL && m is IntegerElement numM && n is IntegerElement numN && o is IntegerElement numO && p is IntegerElement numP)
+            if (a is Integer numA && b is Integer numB && c is Integer numC && d is Integer numD && e is Integer numE && f is Integer numF && g is Integer numG && h is Integer numH && i is Integer numI && j is Integer numJ && k is Integer numK && l is Integer numL && m is Integer numM && n is Integer numN && o is Integer numO && p is Integer numP)
             {
-                SetElement(new Mat4Element(numA, numB, numC, numD, numE, numF, numG, numH, numI, numJ, numK, numL, numM, numN, numO, numP));
+                SetElement(new Mat4(numA, numB, numC, numD, numE, numF, numG, numH, numI, numJ, numK, numL, numM, numN, numO, numP));
             }
             else
             {
-                SetElement(new Mat4Element());
+                SetElement(new Mat4());
             }
         }
     }
 
     public override ElementBase GetElement()
     {
-        IntegerElement a = ObjectView.GetCells()[0].Element as IntegerElement;
-        IntegerElement b = ObjectView.GetCells()[1].Element as IntegerElement;
-        IntegerElement c = ObjectView.GetCells()[2].Element as IntegerElement;
-        IntegerElement d = ObjectView.GetCells()[3].Element as IntegerElement;
-        IntegerElement e = ObjectView.GetCells()[4].Element as IntegerElement;
-        IntegerElement f = ObjectView.GetCells()[5].Element as IntegerElement;
-        IntegerElement g = ObjectView.GetCells()[6].Element as IntegerElement;
-        IntegerElement h = ObjectView.GetCells()[7].Element as IntegerElement;
-        IntegerElement i = ObjectView.GetCells()[8].Element as IntegerElement;
-        IntegerElement j = ObjectView.GetCells()[9].Element as IntegerElement;
-        IntegerElement k = ObjectView.GetCells()[10].Element as IntegerElement;
-        IntegerElement l = ObjectView.GetCells()[11].Element as IntegerElement;
-        IntegerElement m = ObjectView.GetCells()[12].Element as IntegerElement;
-        IntegerElement n = ObjectView.GetCells()[13].Element as IntegerElement;
-        IntegerElement o = ObjectView.GetCells()[14].Element as IntegerElement;
-        IntegerElement p = ObjectView.GetCells()[15].Element as IntegerElement;
-        return new Mat4Element(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p);
+        Integer a = ObjectView.GetCells()[0].Element as Integer;
+        Integer b = ObjectView.GetCells()[1].Element as Integer;
+        Integer c = ObjectView.GetCells()[2].Element as Integer;
+        Integer d = ObjectView.GetCells()[3].Element as Integer;
+        Integer e = ObjectView.GetCells()[4].Element as Integer;
+        Integer f = ObjectView.GetCells()[5].Element as Integer;
+        Integer g = ObjectView.GetCells()[6].Element as Integer;
+        Integer h = ObjectView.GetCells()[7].Element as Integer;
+        Integer i = ObjectView.GetCells()[8].Element as Integer;
+        Integer j = ObjectView.GetCells()[9].Element as Integer;
+        Integer k = ObjectView.GetCells()[10].Element as Integer;
+        Integer l = ObjectView.GetCells()[11].Element as Integer;
+        Integer m = ObjectView.GetCells()[12].Element as Integer;
+        Integer n = ObjectView.GetCells()[13].Element as Integer;
+        Integer o = ObjectView.GetCells()[14].Element as Integer;
+        Integer p = ObjectView.GetCells()[15].Element as Integer;
+        return new Mat4(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p);
     }
 
-    void SetElement(Mat4Element element)
+    void SetElement(Mat4 element)
     {
         this.element = element;
         ObjectView.GetCells()[0].SetElement(element.Elements[0]);
@@ -105,14 +107,14 @@ public partial class Mat4Object : ObjectBase
     protected override bool EvaluateFormula(Formula formula)
     {
         ElementBase result = formula.Evaluate();
-        if (result is Mat4Element mat4Element)
+        if (result is Mat4 mat4Element)
         {
             SetElement(mat4Element);
             return true;
         }
         else
         {
-            SetElement(new Mat4Element());
+            SetElement(new Mat4());
         }
         return false;
     }

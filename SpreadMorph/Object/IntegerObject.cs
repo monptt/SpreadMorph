@@ -1,12 +1,14 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Element;
+
 
 public partial class IntegerObject : ObjectBase
 {
     public override ObjectType Type => ObjectType.Integer;
 
-    IntegerElement element = new IntegerElement(0);
+    Integer element = new Integer(0);
 
     Cell Cell => ObjectView.GetCells()[0];
 
@@ -14,7 +16,7 @@ public partial class IntegerObject : ObjectBase
     protected override void InitView()
     {
         this.SetIsOneObject(true);
-        SetElement(new IntegerElement(0));
+        SetElement(new Integer(0));
         Cell.SetFormula("0");
         this.SetFormula("0");
     }
@@ -25,26 +27,26 @@ public partial class IntegerObject : ObjectBase
         {
             ElementBase element = this.Formula.Evaluate();
 
-            if (element is IntegerElement numberElement)
+            if (element is Integer numberElement)
             {
                 SetElement(numberElement);
             }
             else
             {
-                SetElement(new IntegerElement(0));
+                SetElement(new Integer(0));
             }
         }
         else
         {
             ElementBase element = Cell.Formula.Evaluate();
 
-            if (element is IntegerElement numberElement)
+            if (element is Integer numberElement)
             {
                 SetElement(numberElement);
             }
             else
             {
-                SetElement(new IntegerElement(0));
+                SetElement(new Integer(0));
             }
         }
     }
@@ -53,7 +55,7 @@ public partial class IntegerObject : ObjectBase
     {
         ElementBase result = formula.Evaluate();
 
-        if (result is IntegerElement numberElement)
+        if (result is Integer numberElement)
         {
             SetElement(numberElement);
             return true;
@@ -69,7 +71,7 @@ public partial class IntegerObject : ObjectBase
         return element;
     }
 
-    void SetElement(IntegerElement element)
+    void SetElement(Integer element)
     {
         this.element = element;
         Cell.SetElement(element);

@@ -1,19 +1,20 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Element;
 
 public class FunctionObject : ObjectBase
 {
     public override ObjectType Type => ObjectType.Function;
 
-    FunctionElement element = new FunctionElement();
+    Function element = new Function();
 
     Cell Cell => ObjectView.GetCells()[0];
 
     protected override void InitView()
     {
         SetIsOneObject(true);
-        SetElement(new FunctionElement());
+        SetElement(new Function());
         this.SetFormula("0");
         Cell.SetFormula("0");
     }
@@ -28,13 +29,13 @@ public class FunctionObject : ObjectBase
         else
         {
             ElementBase element = Cell.Formula.Evaluate();
-            if (element is FunctionElement functionElement)
+            if (element is Function functionElement)
             {
                 SetElement(functionElement);
             }
             else
             {
-                SetElement(new FunctionElement());
+                SetElement(new Function());
             }
         }
     }
@@ -47,19 +48,19 @@ public class FunctionObject : ObjectBase
     protected override bool EvaluateFormula(Formula formula)
     {
         ElementBase result = formula.Evaluate();
-        if (result is FunctionElement functionElement)
+        if (result is Function functionElement)
         {
             SetElement(functionElement);
             return true;
         }
         else
         {
-            SetElement(new FunctionElement());
+            SetElement(new Function());
             return false;
         }
     }
 
-    void SetElement(FunctionElement element)
+    void SetElement(Function element)
     {
         this.element = element;
         Cell.SetElement(element);

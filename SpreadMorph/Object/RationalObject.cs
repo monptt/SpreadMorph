@@ -1,19 +1,20 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Element;
 
 public class RationalObject : ObjectBase
 {
     public override ObjectType Type => ObjectType.Rational;
 
-    RationalElement element = new RationalElement(new IntegerElement(0), new IntegerElement(1));
+    Rational element = new Rational(new Integer(0), new Integer(1));
 
     Cell Cell => ObjectView.GetCells()[0];
 
     protected override void InitView()
     {
         SetIsOneObject(true);
-        SetElement(new RationalElement(new IntegerElement(0), new IntegerElement(1)));
+        SetElement(new Rational(new Integer(0), new Integer(1)));
         this.SetFormula("0");
         Cell.SetFormula("0");
     }
@@ -28,13 +29,13 @@ public class RationalObject : ObjectBase
         else
         {
             ElementBase element = Cell.Formula.Evaluate();
-            if (element is RationalElement rationalElement)
+            if (element is Rational rationalElement)
             {
                 SetElement(rationalElement);
             }
             else
             {
-                SetElement(new RationalElement(new IntegerElement(0), new IntegerElement(1)));
+                SetElement(new Rational(new Integer(0), new Integer(1)));
             }
         }
     }
@@ -47,19 +48,19 @@ public class RationalObject : ObjectBase
     protected override bool EvaluateFormula(Formula formula)
     {
         ElementBase result = formula.Evaluate();
-        if (result is RationalElement rationalElement)
+        if (result is Rational rationalElement)
         {
             SetElement(rationalElement);
             return true;
         }
         else
         {
-            SetElement(new RationalElement(new IntegerElement(0), new IntegerElement(1)));
+            SetElement(new Rational(new Integer(0), new Integer(1)));
             return false;
         }
     }
 
-    void SetElement(RationalElement element)
+    void SetElement(Rational element)
     {
         this.element = element;
         Cell.SetElement(element);

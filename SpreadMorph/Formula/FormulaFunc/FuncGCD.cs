@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Element;
 
 /// <summary>
 /// 最大公約数
@@ -14,17 +15,17 @@ public class FuncGCD : FormulaFuncBase
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <returns></returns>
-    public static IntegerElement GCD(IntegerElement a, IntegerElement b)
+    public static Integer GCD(Integer a, Integer b)
     {
         if (a.Value < b.Value)
         {
-            IntegerElement temp = a;
+            Integer temp = a;
             a = b;
             b = temp;
         }
         while (b.Value != 0)
         {
-            IntegerElement temp = b;
+            Integer temp = b;
             b = a % b;
             a = temp;
         }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Element;
 
 /// <summary>
 /// 指数を計算する
@@ -9,9 +10,9 @@ public class FuncPow : FormulaFuncBase
 {
     public static ElementBase Pow(ElementBase baseElement, ElementBase exponent)
     {
-        if (baseElement is PolynomialElement polynomialElement && exponent is IntegerElement exponentIntegerElement)
+        if (baseElement is Polynomial polynomialElement && exponent is Integer exponentIntegerElement)
         {
-            return PolynomialElement.Pow(polynomialElement, exponentIntegerElement);
+            return Polynomial.Pow(polynomialElement, exponentIntegerElement);
         }
         return null;
     }
