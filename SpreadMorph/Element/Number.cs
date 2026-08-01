@@ -25,16 +25,16 @@ namespace Element
                 }
             }
 
-            // {
-            //     if (a is Complex aComplex && b is RealNumber bReal)
-            //     {
-            //         return aComplex + new Complex(bReal, new Integer(0));
-            //     }
-            //     if (a is RealNumber aReal && b is Complex bComplex)
-            //     {
-            //         return new Complex(aReal, new Integer(0)) + bComplex;
-            //     }
-            // }
+            {
+                if (a is Complex aComplex && b is RealNumber bReal)
+                {
+                    return aComplex + new Complex(bReal, new Integer(0));
+                }
+                if (a is RealNumber aReal && b is Complex bComplex)
+                {
+                    return new Complex(aReal, new Integer(0)) + bComplex;
+                }
+            }
 
 
             return null;
@@ -52,16 +52,16 @@ namespace Element
                     return aComplex * bComplex;
                 }
             }
-            // {
-            //     if (a is Complex aComplex && b is RealNumber bReal)
-            //     {
-            //         return aComplex * new Complex(bReal, new Integer(0));
-            //     }
-            //     if (a is RealNumber aReal && b is Complex bComplex)
-            //     {
-            //         return new Complex(aReal, new Integer(0)) * bComplex;
-            //     }
-            // }
+            {
+                if (a is Complex aComplex && b is RealNumber bReal)
+                {
+                    return aComplex * new Complex(bReal, new Integer(0));
+                }
+                if (a is RealNumber aReal && b is Complex bComplex)
+                {
+                    return new Complex(aReal, new Integer(0)) * bComplex;
+                }
+            }
 
             return null;
         }

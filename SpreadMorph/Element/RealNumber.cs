@@ -46,7 +46,16 @@ namespace Element
 
         public static RealNumber operator -(RealNumber a, RealNumber b)
         {
-            return a - b;
+            if (a is Integer aInt && b is Integer bInt)
+            {
+                return aInt - bInt;
+            }
+            if (a is Rational aRational && b is Rational bRational)
+            {
+                return aRational - bRational;
+            }
+
+            return null;
         }
 
         public static RealNumber operator -(RealNumber a)
@@ -56,13 +65,23 @@ namespace Element
 
         public static bool operator ==(RealNumber a, RealNumber b)
         {
+            if (ReferenceEquals(a, b))
+            {
+                return true;
+            }
+            if (a is null || b is null)
+            {
+                return false;
+            }
+
             if (a is Integer aInt && b is Integer bInt)
             {
-                return aInt == bInt;
+                return aInt.Value == bInt.Value;
             }
             if (a is Rational aRational && b is Rational bRational)
             {
-                return aRational == bRational;
+                return aRational.Numerator.Value == bRational.Numerator.Value
+                    && aRational.Denominator.Value == bRational.Denominator.Value;
             }
             return false;
         }
@@ -74,13 +93,20 @@ namespace Element
 
         public static bool operator >(RealNumber a, RealNumber b)
         {
+            if (a is null || b is null)
+            {
+                return false;
+            }
+
             if (a is Integer aInt && b is Integer bInt)
             {
-                return aInt > bInt;
+                return aInt.Value > bInt.Value;
             }
             if (a is Rational aRational && b is Rational bRational)
             {
-                return aRational > bRational;
+                int left = aRational.Numerator.Value * bRational.Denominator.Value;
+                int right = bRational.Numerator.Value * aRational.Denominator.Value;
+                return left > right;
             }
             return false;
         }
