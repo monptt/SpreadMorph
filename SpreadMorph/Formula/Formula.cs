@@ -115,11 +115,11 @@ public class Formula
             // bool
             if (tokens.First().TokenStr.ToLower() == "true")
             {
-                return new BoolElement(true);
+                return new Element.Boolean(true);
             }
             if (tokens.First().TokenStr.ToLower() == "false")
             {
-                return new BoolElement(false);
+                return new Element.Boolean(false);
             }
 
             // 変数
@@ -280,9 +280,9 @@ public class Formula
                         return null;
                     }
 
-                    if (left is BoolElement leftBool && right is BoolElement rightBool)
+                    if (left is Element.Boolean leftBool && right is Element.Boolean rightBool)
                     {
-                        return new BoolElement(leftBool.Value || rightBool.Value);
+                        return new Element.Boolean(leftBool.Value || rightBool.Value);
                     }
                     return null;
                 }
@@ -312,9 +312,9 @@ public class Formula
                         return null;
                     }
 
-                    if (left is BoolElement leftBool && right is BoolElement rightBool)
+                    if (left is Element.Boolean leftBool && right is Element.Boolean rightBool)
                     {
-                        return new BoolElement(leftBool.Value && rightBool.Value);
+                        return new Element.Boolean(leftBool.Value && rightBool.Value);
                     }
                     return null;
                 }
@@ -326,9 +326,9 @@ public class Formula
             if (tokens.First().TokenStr.ToLower() == "not" || tokens.First().TokenStr == "!")
             {
                 ElementBase element = Evaluate(tokens.Skip(1).ToList());
-                if (element is BoolElement boolElement)
+                if (element is Element.Boolean boolElement)
                 {
-                    return new BoolElement(!boolElement.Value);
+                    return new Element.Boolean(!boolElement.Value);
                 }
                 return null;
             }

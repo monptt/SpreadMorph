@@ -86,7 +86,7 @@ public partial class Cell : Node2D
         this.status = status;
     }
 
-    public void SetElement(BoolElement value)
+    public void SetElement(Element.Boolean value)
     {
         valueLabel.Text = value.ToString();
         this.element = value;

@@ -1,19 +1,20 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Element;
 
 public class BoolObject : ObjectBase
 {
     public override ObjectType Type => ObjectType.Bool;
 
-    BoolElement element = new BoolElement(false);
+    Element.Boolean element = new Element.Boolean(false);
 
     Cell Cell => ObjectView.GetCells()[0];
 
     protected override void InitView()
     {
         SetIsOneObject(true);
-        SetElement(new BoolElement(false));
+        SetElement(new Element.Boolean(false));
         this.SetFormula("false");
         Cell.SetFormula("false");
     }
@@ -28,13 +29,13 @@ public class BoolObject : ObjectBase
         else
         {
             ElementBase element = Cell.Formula.Evaluate();
-            if (element is BoolElement boolElement)
+            if (element is Element.Boolean boolElement)
             {
                 SetElement(boolElement);
             }
             else
             {
-                SetElement(new BoolElement(false));
+                SetElement(new Element.Boolean(false));
             }
         }
     }
@@ -47,19 +48,19 @@ public class BoolObject : ObjectBase
     protected override bool EvaluateFormula(Formula formula)
     {
         ElementBase result = formula.Evaluate();
-        if (result is BoolElement boolElement)
+        if (result is Element.Boolean boolElement)
         {
             SetElement(boolElement);
             return true;
         }
         else
         {
-            SetElement(new BoolElement(false));
+            SetElement(new Element.Boolean(false));
             return false;
         }
     }
 
-    void SetElement(BoolElement element)
+    void SetElement(Element.Boolean element)
     {
         this.element = element;
         Cell.SetElement(element);

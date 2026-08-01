@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Element;
 
 /// <summary>
 /// 引数の合計を計算する
