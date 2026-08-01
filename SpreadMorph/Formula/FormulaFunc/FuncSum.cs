@@ -17,13 +17,9 @@ public class FuncSum : FormulaFuncBase
     public static ElementBase Sum(ElementBase a, ElementBase b)
     {
         {
-            if (a is Integer integerElementA && b is Integer integerElementB)
+            if (a is Number aNumber && b is Number bNumber)
             {
-                return Integer.Sum(integerElementA, integerElementB);
-            }
-            if (a is Complex complexElementA && b is Complex complexElementB)
-            {
-                return Complex.Sum(complexElementA, complexElementB);
+                return aNumber + bNumber;
             }
         }
 

@@ -60,5 +60,15 @@ namespace Element
         {
             return new Complex(-re, -im);
         }
+
+        public static Complex operator +(Complex a, Complex b)
+        {
+            return Sum(a, b);
+        }
+
+        public static Complex operator *(Complex a, Complex b)
+        {
+            return Multiply(a, b);
+        }
     }
 }

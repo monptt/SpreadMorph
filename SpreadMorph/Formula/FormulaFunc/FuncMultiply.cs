@@ -18,13 +18,9 @@ public class FuncMultiply : FormulaFuncBase
     {
         // 整数、複素数
         {
-            if (a is Integer integerElementA && b is Integer integerElementB)
+            if (a is Number aNumber && b is Number bNumber)
             {
-                return Integer.Multiply(integerElementA, integerElementB);
-            }
-            if (a is Complex complexElementA && b is Complex complexElementB)
-            {
-                return Complex.Multiply(complexElementA, complexElementB);
+                return aNumber * bNumber;
             }
         }
 

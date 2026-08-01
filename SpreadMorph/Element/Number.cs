@@ -14,28 +14,54 @@ namespace Element
 
         public static Number Sum(Number a, Number b)
         {
-            if (a is RealNumber aReal && b is RealNumber bReal)
             {
-                return aReal + bReal;
+                if (a is RealNumber aReal && b is RealNumber bReal)
+                {
+                    return aReal + bReal;
+                }
+                if (a is Complex aComplex && b is Complex bComplex)
+                {
+                    return aComplex + bComplex;
+                }
             }
-            if (a is Complex aComplex && b is Complex bComplex)
-            {
-                return aComplex + bComplex;
-            }
+
+            // {
+            //     if (a is Complex aComplex && b is RealNumber bReal)
+            //     {
+            //         return aComplex + new Complex(bReal, new Integer(0));
+            //     }
+            //     if (a is RealNumber aReal && b is Complex bComplex)
+            //     {
+            //         return new Complex(aReal, new Integer(0)) + bComplex;
+            //     }
+            // }
+
 
             return null;
         }
 
         public static Number Multiply(Number a, Number b)
         {
-            if (a is RealNumber aReal && b is RealNumber bReal)
             {
-                return aReal * bReal;
+                if (a is RealNumber aReal && b is RealNumber bReal)
+                {
+                    return aReal * bReal;
+                }
+                if (a is Complex aComplex && b is Complex bComplex)
+                {
+                    return aComplex * bComplex;
+                }
             }
-            if (a is Complex aComplex && b is Complex bComplex)
-            {
-                return aComplex * bComplex;
-            }
+            // {
+            //     if (a is Complex aComplex && b is RealNumber bReal)
+            //     {
+            //         return aComplex * new Complex(bReal, new Integer(0));
+            //     }
+            //     if (a is RealNumber aReal && b is Complex bComplex)
+            //     {
+            //         return new Complex(aReal, new Integer(0)) * bComplex;
+            //     }
+            // }
 
             return null;
         }
