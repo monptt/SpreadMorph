@@ -15,7 +15,7 @@ public class Formula
     /// <summary>
     /// 関数名として認識されるトークンリスト
     /// </summary>
-    List<string> funcNames = new List<string> { "SUM", "GCD", "LCM" };
+    List<string> funcNames = new List<string> { "SUM", "GCD", "LCM", "DIFFERENTIATE" };
 
 
     public Formula(string formulaStr)
@@ -38,9 +38,39 @@ public class Formula
         // 数式文字列をトークンに分割
         foreach (string str in formulaStr.Split(' ')) // 一旦スペースで分割
         {
+            // 0文字はスキップ
             if (str == "")
             {
                 continue;
+            }
+
+            // 虚数
+            if (str == "i")
+            {
+                tokens.Add(new FormulaToken("i"));
+                continue;
+            }
+            else if (str[str.Length - 1] == 'i')
+            {
+                bool isNumber = true;
+                foreach (char c in str.Substring(0, str.Length - 1))
+                {
+                    if ("0123456789.".Contains(c))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        isNumber = false;
+                        break;
+                    }
+                }
+                if (isNumber)
+                {
+                    tokens.Add(new FormulaToken(str.Substring(0, str.Length - 1)));
+                    tokens.Add(new FormulaToken("i"));
+                    continue;
+                }
             }
 
             string tempToken = "";
@@ -54,15 +84,6 @@ public class Formula
                         tempToken = "";
                     }
                     tokens.Add(new FormulaToken(c.ToString()));
-                }
-                else if (c == 'i')
-                {
-                    if (tempToken != "")
-                    {
-                        tokens.Add(new FormulaToken(tempToken));
-                        tempToken = "";
-                    }
-                    tokens.Add(new FormulaToken("i"));
                 }
                 else
                 {
@@ -371,6 +392,14 @@ public class Formula
                 if (argElements.Count == 2 && argElements[0] is Integer a && argElements[1] is Integer b)
                 {
                     return FuncLCM.LCM(a, b);
+                }
+                return null;
+            }
+            if (funcName == "DIFFERENTIATE")
+            {
+                if (argElements.Count == 1)
+                {
+                    return FuncDifferentiate.Differentiate(argElements[0]);
                 }
                 return null;
             }

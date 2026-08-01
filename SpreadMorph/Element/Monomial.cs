@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 単項式
     /// </summary>
-    public class Monomial : ElementBase, INegate
+    public class Monomial : ElementBase, INegate, IDifferentiable
     {
         /// <summary>
         /// 係数
@@ -26,6 +26,18 @@ namespace Element
         public ElementBase Negate()
         {
             return new Monomial(coefficient.Negate() as Integer, degree);
+        }
+
+        public ElementBase Differentiate()
+        {
+            if (degree == new Integer(0))
+            {
+                return new Integer(0);
+            }
+            else
+            {
+                return new Monomial(coefficient * degree, degree - new Integer(1));
+            }
         }
     }
 }

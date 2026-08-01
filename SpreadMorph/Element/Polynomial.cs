@@ -6,7 +6,7 @@ namespace Element
     /// <summary>
     /// 多項式
     /// </summary>
-    public class Polynomial : ElementBase, INegate
+    public class Polynomial : ElementBase, INegate, IDifferentiable
     {
         /// <summary>
         /// 次数と項のペア
@@ -159,6 +159,18 @@ namespace Element
             {
                 terms.Add(term.Degree, term);
             }
+        }
+
+
+        public ElementBase Differentiate()
+        {
+            Polynomial result = new Polynomial();
+            foreach (var pair in terms)
+            {
+                Monomial term = pair.Value;
+                result.AddTerm(term.Differentiate() as Monomial);
+            }
+            return result;
         }
     }
 }
