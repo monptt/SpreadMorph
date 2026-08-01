@@ -1,7 +1,7 @@
 namespace Element
 {
     /// <summary>
-    /// 数
+    /// 数（定数）
     /// </summary>
     public abstract class Number : ElementBase, IDifferentiable, INegate
     {
@@ -16,20 +16,36 @@ namespace Element
         {
             if (a is Integer aInt && b is Integer bInt)
             {
-                return new Integer(aInt.Value + bInt.Value);
+                return aInt + bInt;
+            }
+            if (a is Rational aRational && b is Rational bRational)
+            {
+                return aRational + bRational;
+            }
+            if (a is Complex aComplex && b is Complex bComplex)
+            {
+                return aComplex + bComplex;
             }
 
-            return new Integer(0);
+            return null;
         }
 
         public static Number Multiply(Number a, Number b)
         {
             if (a is Integer aInt && b is Integer bInt)
             {
-                return new Integer(aInt.Value * bInt.Value);
+                return aInt * bInt;
+            }
+            if (a is Rational aRational && b is Rational bRational)
+            {
+                return aRational * bRational;
+            }
+            if (a is Complex aComplex && b is Complex bComplex)
+            {
+                return aComplex * bComplex;
             }
 
-            return new Integer(0);
+            return null;
         }
 
         public static Number operator +(Number a, Number b)

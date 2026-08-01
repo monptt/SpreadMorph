@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 数
     /// </summary>
-    public class Integer : Number, IInverse
+    public class Integer : RealNumber, IInverse
     {
         int value;
         public int Value => value;
