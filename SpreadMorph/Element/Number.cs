@@ -14,13 +14,9 @@ namespace Element
 
         public static Number Sum(Number a, Number b)
         {
-            if (a is Integer aInt && b is Integer bInt)
+            if (a is RealNumber aReal && b is RealNumber bReal)
             {
-                return aInt + bInt;
-            }
-            if (a is Rational aRational && b is Rational bRational)
-            {
-                return aRational + bRational;
+                return aReal + bReal;
             }
             if (a is Complex aComplex && b is Complex bComplex)
             {
@@ -32,13 +28,9 @@ namespace Element
 
         public static Number Multiply(Number a, Number b)
         {
-            if (a is Integer aInt && b is Integer bInt)
+            if (a is RealNumber aReal && b is RealNumber bReal)
             {
-                return aInt * bInt;
-            }
-            if (a is Rational aRational && b is Rational bRational)
-            {
-                return aRational * bRational;
+                return aReal * bReal;
             }
             if (a is Complex aComplex && b is Complex bComplex)
             {

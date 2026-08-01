@@ -105,9 +105,6 @@ public partial class Cell : Node2D
             SetElement(valueComplex);
             return;
         }
-
-        valueLabel.Text = value.ToString();
-        this.element = value;
     }
 
     public void SetElement(Element.Boolean value)
@@ -141,47 +138,47 @@ public partial class Cell : Node2D
 
     public void SetElement(Complex value)
     {
-        if (value.Im.Value == 0)
+        if (value.Im == new Integer(0))
         {
             // 実数
-            valueLabel.Text = $"{value.Re.Value}";
+            valueLabel.Text = $"{value.Re}";
         }
-        else if (value.Re.Value == 0)
+        else if (value.Re == new Integer(0))
         {
             // 純虚数
-            if (value.Im.Value == 1)
+            if (value.Im == new Integer(1))
             {
                 valueLabel.Text = "i";
             }
-            else if (value.Im.Value == -1)
+            else if (value.Im == new Integer(-1))
             {
                 valueLabel.Text = "-i";
             }
             else
             {
-                valueLabel.Text = $"{value.Im.Value}i";
+                valueLabel.Text = $"{value.Im}i";
             }
         }
         else
         {
             // 複素数
-            if (value.Im.Value == 1)
+            if (value.Im == new Integer(1))
             {
-                valueLabel.Text = $"{value.Re.Value} + i";
+                valueLabel.Text = $"{value.Re} + i";
             }
-            else if (value.Im.Value == -1)
+            else if (value.Im == new Integer(-1))
             {
-                valueLabel.Text = $"{value.Re.Value} - i";
+                valueLabel.Text = $"{value.Re} - i";
             }
             else
             {
-                if (value.Im.Value > 0)
+                if (value.Im > new Integer(0))
                 {
-                    valueLabel.Text = $"{value.Re.Value} + {value.Im.Value}i";
+                    valueLabel.Text = $"{value.Re} + {value.Im}i";
                 }
                 else
                 {
-                    valueLabel.Text = $"{value.Re.Value} - {-value.Im.Value}i";
+                    valueLabel.Text = $"{value.Re} - {-value.Im}i";
                 }
             }
         }

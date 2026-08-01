@@ -43,6 +43,16 @@ namespace Element
             return Multiply(a, b);
         }
 
+        public static Rational Sum(Rational a, Rational b)
+        {
+            return new Rational(a.numerator * b.denominator + b.numerator * a.denominator, a.denominator * b.denominator);
+        }
+
+        public static Rational operator +(Rational a, Rational b)
+        {
+            return Sum(a, b);
+        }
+
         public override ElementBase Negate()
         {
             return new Rational(numerator.Negate() as Integer, denominator);

@@ -5,12 +5,12 @@ namespace Element
     /// </summary>
     public class Complex : Number
     {
-        Integer re;
-        Integer im;
-        public Integer Re => re;
-        public Integer Im => im;
+        RealNumber re;
+        RealNumber im;
+        public RealNumber Re => re;
+        public RealNumber Im => im;
 
-        public Complex(Integer re, Integer im)
+        public Complex(RealNumber re, RealNumber im)
         {
             this.re = re;
             this.im = im;
@@ -27,7 +27,7 @@ namespace Element
             return new Complex(a.Re + b.Re, a.Im + b.Im);
         }
 
-        public static Complex Sum(Complex a, Integer b)
+        public static Complex Sum(Complex a, RealNumber b)
         {
             return new Complex(a.Re + b, a.Im);
         }
@@ -51,14 +51,14 @@ namespace Element
             );
         }
 
-        public static Complex Multiply(Complex a, Integer b)
+        public static Complex Multiply(Complex a, RealNumber b)
         {
             return new Complex(a.Re * b, a.Im * b);
         }
 
         public override ElementBase Negate()
         {
-            return new Complex(new Integer(-re.Value), new Integer(-im.Value));
+            return new Complex(-re, -im);
         }
     }
 }
