@@ -74,5 +74,18 @@ namespace Element
             }
             return result;
         }
+
+        public override ElementBase Negate()
+        {
+            Mat4 result = new Mat4();
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    result.SetElement(i, j, GetElement(i, j).Negate() as Integer);
+                }
+            }
+            return result;
+        }
     }
 }

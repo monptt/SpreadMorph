@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Element
 {
-    public class Mat2 : Matrix, INegate
+    public class Mat2 : Matrix
     {
         public override int Rows => 2;
         public override int Columns => 2;
@@ -16,17 +16,17 @@ namespace Element
             {
                 for (int j = 0; j < Columns; j++)
                 {
-                    elements[i * Columns + j] = new Integer(0);
+                    SetElement(i, j, new Integer(0));
                 }
             }
         }
 
         public Mat2(Integer a, Integer b, Integer c, Integer d)
         {
-            elements[0] = a;
-            elements[1] = b;
-            elements[2] = c;
-            elements[3] = d;
+            SetElement(0, 0, a);
+            SetElement(0, 1, b);
+            SetElement(1, 0, c);
+            SetElement(1, 1, d);
         }
 
         public static Mat2 operator +(Mat2 a, Mat2 b)
@@ -36,7 +36,7 @@ namespace Element
             {
                 for (int j = 0; j < a.Columns; j++)
                 {
-                    result.elements[i * a.Columns + j] = Integer.Sum(a.GetElement(i, j), b.GetElement(i, j));
+                    result.SetElement(i, j, Integer.Sum(a.GetElement(i, j), b.GetElement(i, j)));
                 }
             }
             return result;
@@ -49,7 +49,7 @@ namespace Element
             {
                 for (int j = 0; j < a.Columns; j++)
                 {
-                    result.elements[i * a.Columns + j] = a.GetElement(i, j).Negate() as Integer;
+                    result.SetElement(i, j, a.GetElement(i, j).Negate() as Integer);
                 }
             }
             return result;
@@ -60,7 +60,7 @@ namespace Element
             return a + (-b);
         }
 
-        public ElementBase Negate()
+        public override ElementBase Negate()
         {
             return -this;
         }

@@ -16,7 +16,7 @@ namespace Element
             {
                 for (int j = 0; j < Columns; j++)
                 {
-                    elements[i * Columns + j] = new Integer(0);
+                    SetElement(i, j, new Integer(0));
                 }
             }
         }
@@ -25,15 +25,15 @@ namespace Element
                             Integer d, Integer e, Integer f,
                             Integer g, Integer h, Integer i)
         {
-            elements[0] = a;
-            elements[1] = b;
-            elements[2] = c;
-            elements[3] = d;
-            elements[4] = e;
-            elements[5] = f;
-            elements[6] = g;
-            elements[7] = h;
-            elements[8] = i;
+            SetElement(0, 0, a);
+            SetElement(0, 1, b);
+            SetElement(0, 2, c);
+            SetElement(1, 0, d);
+            SetElement(1, 1, e);
+            SetElement(1, 2, f);
+            SetElement(2, 0, g);
+            SetElement(2, 1, h);
+            SetElement(2, 2, i);
         }
 
         public static Vec3 operator *(Mat3 a, Vec3 b)
@@ -60,6 +60,19 @@ namespace Element
                         Integer.Multiply(a.GetElement(i, 0), b.GetElement(0, j)) +
                         Integer.Multiply(a.GetElement(i, 1), b.GetElement(1, j)) +
                         Integer.Multiply(a.GetElement(i, 2), b.GetElement(2, j));
+                }
+            }
+            return result;
+        }
+
+        public override ElementBase Negate()
+        {
+            Mat3 result = new Mat3();
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    result.SetElement(i, j, GetElement(i, j).Negate() as Integer);
                 }
             }
             return result;
