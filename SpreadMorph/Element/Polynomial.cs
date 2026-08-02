@@ -6,7 +6,7 @@ namespace Element
     /// <summary>
     /// 多項式
     /// </summary>
-    public class Polynomial : ElementBase, INegate, IDifferentiable
+    public class Polynomial : Function, INegate, IDifferentiable
     {
         /// <summary>
         /// 次数と項のペア

@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 単項式
     /// </summary>
-    public class Monomial : ElementBase, INegate, IDifferentiable
+    public class Monomial : Function, INegate, IDifferentiable
     {
         /// <summary>
         /// 係数
