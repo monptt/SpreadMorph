@@ -1,9 +1,11 @@
+using Godot;
+
 namespace Element
 {
     /// <summary>
     /// 数
     /// </summary>
-    public class Integer : RealNumber, IInverse
+    public class Integer : RealNumber, IInverse, IAbsolute
     {
         int value;
         public int Value => value;
@@ -117,6 +119,11 @@ namespace Element
         public override ElementBase Negate()
         {
             return new Integer(-value);
+        }
+
+        public RealNumber Absolute()
+        {
+            return new Integer(Mathf.Abs(value));
         }
     }
 }

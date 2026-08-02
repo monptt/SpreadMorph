@@ -15,7 +15,7 @@ public class Formula
     /// <summary>
     /// 関数名として認識されるトークンリスト
     /// </summary>
-    List<string> funcNames = new List<string> { "SUM", "GCD", "LCM", "DIFFERENTIATE" };
+    List<string> funcNames = new List<string> { "ABS", "SUM", "GCD", "LCM", "DIFFERENTIATE" };
 
 
     public Formula(string formulaStr)
@@ -375,6 +375,10 @@ public class Formula
             }
 
             string funcName = tokens.First().TokenStr.ToUpper();
+            if (funcName == "ABS")
+            {
+                return FuncAbsolute.Absolute(argElements[0]);
+            }
             if (funcName == "SUM")
             {
                 return FuncSum.Sum(argElements);

@@ -5,6 +5,9 @@ namespace Element
     /// </summary>
     public class Set : ElementBase
     {
-
+        public override string ToString()
+        {
+            return "set";
+        }
     }
 }

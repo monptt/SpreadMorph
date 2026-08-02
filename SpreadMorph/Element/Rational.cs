@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 有理数クラス
     /// </summary>
-    public class Rational : RealNumber, IInverse
+    public class Rational : RealNumber, IInverse, IAbsolute
     {
         Integer numerator = new Integer(0);
         public Integer Numerator => numerator;
@@ -56,6 +56,12 @@ namespace Element
         public override ElementBase Negate()
         {
             return new Rational(numerator.Negate() as Integer, denominator);
+        }
+
+
+        public RealNumber Absolute()
+        {
+            return new Rational(numerator.Absolute() as Integer, denominator.Absolute() as Integer);
         }
     }
 }
