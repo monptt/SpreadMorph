@@ -8,8 +8,8 @@ namespace Element
         /// <summary>
         /// 係数
         /// </summary>
-        Integer coefficient;
-        public Integer Coefficient => coefficient;
+        RealNumber coefficient;
+        public RealNumber Coefficient => coefficient;
 
         /// <summary>
         /// 次数
@@ -17,7 +17,7 @@ namespace Element
         Integer degree;
         public Integer Degree => degree;
 
-        public Monomial(Integer coefficient, Integer degree)
+        public Monomial(RealNumber coefficient, Integer degree)
         {
             this.coefficient = coefficient;
             this.degree = degree;
@@ -25,7 +25,7 @@ namespace Element
 
         public ElementBase Negate()
         {
-            return new Monomial(coefficient.Negate() as Integer, degree);
+            return new Monomial(coefficient.Negate() as RealNumber, degree);
         }
 
         public ElementBase Differentiate()

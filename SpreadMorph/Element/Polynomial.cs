@@ -22,7 +22,7 @@ namespace Element
         /// </summary>
         /// <param name="degree">次数</param>
         /// <param name="coefficient">係数</param>
-        public Polynomial(Integer degree, Integer coefficient)
+        public Polynomial(Integer degree, RealNumber coefficient)
         {
             terms.Add(degree, new Monomial(coefficient, degree));
         }
@@ -31,7 +31,7 @@ namespace Element
         /// 定数
         /// </summary>
         /// <param name="c"></param>
-        public Polynomial(Integer c)
+        public Polynomial(RealNumber c)
         {
             terms.Add(new Integer(0), new Monomial(c, new Integer(0)));
         }
@@ -55,7 +55,7 @@ namespace Element
                 string coefficientStr = ""; // 係数の部分
                 string xStr = ""; // x^n の部分
 
-                if (term.Coefficient.Value == 1 && term.Degree.Value != 0)
+                if (term.Coefficient == new Integer(1) && term.Degree.Value != 0)
                 {
                     coefficientStr = "";
                 }
@@ -63,7 +63,7 @@ namespace Element
                 {
                     if (i != 0)
                     {
-                        if (term.Coefficient.Value > 0)
+                        if (term.Coefficient > new Integer(0))
                         {
                             coefficientStr += "+";
                         }
