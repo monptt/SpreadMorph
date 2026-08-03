@@ -14,11 +14,12 @@ font_color = Color(0.247059, 0.247059, 0.247059, 1)
 font_size = 26
 font_color = Color(0.172549, 0.172549, 0.172549, 1)
 
-[node name="Inspector" type="Node2D" node_paths=PackedStringArray("selectedPosLabel", "selectedObjTypeLabel", "valueLabel")]
+[node name="Inspector" type="Node2D" node_paths=PackedStringArray("selectedPosLabel", "selectedObjTypeLabel", "valueLabel", "previewTextureRect")]
 script = ExtResource("1_p4v8p")
 selectedPosLabel = NodePath("SelectedPosLabel")
 selectedObjTypeLabel = NodePath("SelectedObjType")
 valueLabel = NodePath("ValueLabel")
+previewTextureRect = NodePath("PreviewBG/PreviewTextureRect")
 
 [node name="Bg" type="ColorRect" parent="."]
 offset_right = 315.0
@@ -48,3 +49,23 @@ offset_right = 55.0
 offset_bottom = 70.0
 text = "0"
 label_settings = SubResource("LabelSettings_hrstq")
+
+[node name="PreviewBG" type="ColorRect" parent="."]
+offset_left = 315.0
+offset_right = 586.0
+offset_bottom = 76.0
+
+[node name="PreviewTextureRect" type="TextureRect" parent="PreviewBG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.5
+offset_top = -28.0
+offset_right = 122.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5

@@ -3,7 +3,7 @@ namespace Element
     /// <summary>
     /// 複素数
     /// </summary>
-    public class Complex : Number
+    public class Complex : Number, ILaTeX
     {
         RealNumber re;
         RealNumber im;
@@ -69,6 +69,11 @@ namespace Element
         public static Complex operator *(Complex a, Complex b)
         {
             return Multiply(a, b);
+        }
+
+        public string ToLaTeX()
+        {
+            return $"{re} + {im}i";
         }
     }
 }
